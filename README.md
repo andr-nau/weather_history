@@ -1,5 +1,6 @@
 # weather_history
 __Weather project for "Python: Data Analysis" LinkedIn cource__
+
 The project is still in progress.
 
 I would like to present some test work with NumPy and Matplotlib libraries - investigation of weather data using [Global Historical Climatology Network (GHCN) database  ](https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn) at U.S. NOAA Climate Data Online service.

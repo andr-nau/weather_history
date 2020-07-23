@@ -31,3 +31,8 @@ __One of the test outputs - summary of maximum and minimum temperature over main
 
 
 ![Output figure](https://github.com/andr-nau/weather_history/blob/master/Fig1.png "KYIV data")
+
+
+The next step was to check the trends in winter temperatures. I extracted the temperature data for the winter months for each year and averaged over three months. Additionally, I calculated trend line over all years:
+
+![Output figure](https://github.com/andr-nau/weather_history/blob/master/Fig2.png "Winter averaged temperatures")

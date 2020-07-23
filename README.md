@@ -1,13 +1,27 @@
-# weather_history
-__Weather project for "Python: Data Analysis" LinkedIn course__
+## Weather project for "Python: Data Analysis" LinkedIn course
 
-The project is still in progress.
+Exploring history of weather in Kyiv, using data from station "KIEV, UP", Network:ID "__GHCND:UPM00033345__". Location: Ukrainian Hydrometeorological Institute. The largest set of data: from 1881-01-01 to 2020-07-20.
+(Latitude / Longitude: 50.4000° / 30.5331°, Elevation: 166 m)
 
-I would like to present some test work with NumPy and Matplotlib libraries - investigation of weather data using [Global Historical Climatology Network (GHCN) database  ](https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn) at U.S. NOAA Climate Data Online service.
+I'm using open data from Global Historical Climatology Network - (GHCN).
 
-I chose the data from station UPM00033345 in Kyiv, Ukraine.
+This is data service from the USA National Oceanic and Atmospheric Administration, NOAA / National Centers for Environmental Information, NCEI (former National Climatic Data Center, NCDC)
 
 
-__One of the test outputs - summary of maximum and minimum temperature over main observable period, and comparison with my birthday year - 1980 :)__
+Besides training tasks from Data Analysis cource (to find and visualize a data for US cities), I'm interested in changing of winter temperatures over the years for Kyiv city, Ukraine, - my home city.
 
-![Output figure](https://github.com/andr-nau/weather_history/blob/master/Fig1.png "KYIV data")
+General algorithm:
+
+- find station in list: ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt (or https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt)
+
+- download dataset named "UPM00033345.dly" from ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/all/ (or https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/all/)
+
+- parse the file using description in readme.txt https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt from GHCN
+
+- to get overall picture for temperatures over all years
+
+- to process the data - if there are gaps, NANs
+
+- to extract needed parameters - daily TMAX, TMIN and their time references
+
+- to build dependencies of TMAX, TMIN on specified timing

@@ -1,7 +1,6 @@
 ## Weather project for "Python: Data Analysis" LinkedIn course
 
-Exploring history of weather in Kyiv, using data from station "KIEV, UP", Network:ID "__GHCND:UPM00033345__". Location: Ukrainian Hydrometeorological Institute. The largest set of data: from 1881-01-01 to 2020-07-20.
-(Latitude / Longitude: 50.4000° / 30.5331°, Elevation: 166 m)
+__Exploring history of weather in Kyiv, using data from station "KIEV, UP", Network:ID "GHCND:UPM00033345". Location: Ukrainian Hydrometeorological Institute. The largest set of data: from 1881-01-01 to 2020-07-20. (Latitude / Longitude: 50.4000Â° / 30.5331Â°, Elevation: 166 m)__
 
 I'm using open data from Global Historical Climatology Network - (GHCN).
 
@@ -27,6 +26,8 @@ General algorithm:
 - to build dependencies of TMAX, TMIN on specified timing
 
 
+
 __One of the test outputs - summary of maximum and minimum temperature over main observable period, and comparison with my birthday year - 1980 :)__
+
 
 ![Output figure](https://github.com/andr-nau/weather_history/blob/master/Fig1.png "KYIV data")

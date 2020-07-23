@@ -25,3 +25,8 @@ General algorithm:
 - to extract needed parameters - daily TMAX, TMIN and their time references
 
 - to build dependencies of TMAX, TMIN on specified timing
+
+
+__One of the test outputs - summary of maximum and minimum temperature over main observable period, and comparison with my birthday year - 1980 :)__
+
+![Output figure](https://github.com/andr-nau/weather_history/blob/master/Fig1.png "KYIV data")

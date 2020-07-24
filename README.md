@@ -1,38 +1,43 @@
 ## Weather project for "Python: Data Analysis" LinkedIn course
 
-__Exploring history of weather in Kyiv, using data from station "KIEV, UP", Network:ID "GHCND:UPM00033345". Location: Ukrainian Hydrometeorological Institute. The largest set of data: from 1881-01-01 to 2020-07-20. (Latitude / Longitude: 50.4000° / 30.5331°, Elevation: 166 m)__
+### Exploring weather history in Kyiv city, Ukraine.
 
-I'm using open data from Global Historical Climatology Network - (GHCN).
+__Besides training tasks from [Data Analysis course](https://www.linkedin.com/learning/python-data-analysis-2015) (to find and visualize a data for US cities), I'm interested in climate changing in Kyiv city, Ukraine - my home city.__
 
-This is data service from the USA National Oceanic and Atmospheric Administration, NOAA / National Centers for Environmental Information, NCEI (former National Climatic Data Center, NCDC)
+I'm using data from station "KIEV, UP", Network:ID "GHCND:UPM00033345". Location: Ukrainian Hydrometeorological Institute. The largest set of data comparing to other stations: from 1881-01-01 to 2020-07-20. (Latitude / Longitude: 50.4000° / 30.5331°, Elevation: 166 m)
 
+Data access provided by Global Historical Climatology Network - ([GHCN](https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn)). This is data service from the USA National Oceanic and Atmospheric Administration, NOAA / National Centers for Environmental Information, NCEI (former National Climatic Data Center, NCDC)
 
-Besides training tasks from Data Analysis cource (to find and visualize a data for US cities), I'm interested in changing of winter temperatures over the years for Kyiv city, Ukraine, - my home city.
+__General algorithm of data processing:__
 
-General algorithm:
+- get list of weather stations: [ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt](ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt) (or [https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt](https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt));
 
-- find station in list: ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt (or https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt)
+- using simple parser, find a station by city name and get a filename (Kiyv -> UPM00033345.dly);
+ 
+- download dataset ("UPM00033345.dly" for my case) from [ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/all/](ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/all/) (or [https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/all/](https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/all/));
 
-- download dataset named "UPM00033345.dly" from ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/all/ (or https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/all/)
+- parse the file using description in readme.txt ([https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt](https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt)) from GHCN;
 
-- parse the file using description in readme.txt https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt from GHCN
+- extract needed parameters - daily max/min temperature (TMAX, TMIN) and their time reference;
 
-- to get overall picture for temperatures over all years
+- plot overall picture for temperatures over all years;
 
-- to process the data - if there are gaps, NANs
+- to clean the data - if there are gaps, NANs etc.;
 
-- to extract needed parameters - daily TMAX, TMIN and their time references
+__My specific tasks:__
 
-- to build dependencies of TMAX, TMIN on specified timing
+1. to plot stacked graph of TMAX, TMIN over all period; 
 
+2. to build dependencies of TMAX, TMIN on specified dates/seasons;
 
-
-__One of the test outputs - summary of maximum and minimum temperature over main observable period, and comparison with my birthday year - 1980 :)__
+__Task 1 - summary of maximum and minimum temperature over all observable period, and comparison with my birthday year - 1980 :)__
 
 
 ![Output figure](https://github.com/andr-nau/weather_history/blob/master/Fig1.png "KYIV data")
 
 
-The next step was to check the trends in winter temperatures. I extracted the temperature data for the winter months for each year and averaged over three months. Additionally, I calculated trend line over all years:
+__Task 2 - Check the trends in winter temperatures.__
+ 
+I extracted the temperature data for the winter months for each year and averaged it over three months. Additionally, I calculated trend line over all years:
 
 ![Output figure](https://github.com/andr-nau/weather_history/blob/master/Fig2.png "Winter averaged temperatures")

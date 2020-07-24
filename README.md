@@ -40,23 +40,29 @@ I'm using NumPy package to process the data: __genfromtxt function__ to read all
 
 ## Workflow.
 
-First, let's take a look on raw data. I have used structured numpy array and genfromtxt function to load the  full dataset. And then a function to extract rows with specified observation parameters, e.g. TMAX or TMIN (day max or min temperature, respectively). Raw data over all years of observation:
+First, let's take a look on raw data. I have used structured numpy array and __genfromtxt__ function to load the full dataset, and then built a function to extract rows with specified observation parameters, e.g. TMAX or TMIN (daily max or min temperature, respectively). Raw data over all years of observation:
 ![Output figure](https://github.com/andr-nau/weather_history/blob/master/raw_day_temp.png "Raw dataset")
 
-Dataset is not very accurate. After 2005 there are a lot of missing values (that filled with NANs during procedure of extracting TMAX/TMIN):
+Dataset is not very accurate. After 2005 there are a lot of missing values (filled with NANs during procedure of extracting TMAX/TMIN):
 ![Output figure](https://github.com/andr-nau/weather_history/blob/master/raw_day_temp_2000.png "Raw dataset")
 
 Besides of missing single values (marked as NAN after import), there are missing whole month records (rows of TMAX or TMIN for one month). By comparing number of TMAX or TMIN rows for each year (should be 12 of each type), I found missing monthly records in 12 different years. Example of badly documented years:
 ![Output figure](https://github.com/andr-nau/weather_history/blob/master/Bad_years.png "Bad years")
 
-To proceed next, I filled NAN values using numpy interpolation. Final picture:
+To proceed next, I filled NAN values using numpy __interp__ function. The resulting graph:
 ![Output figure](https://github.com/andr-nau/weather_history/blob/master/filled_day_temp.png "Filled NANs")
 
 And detailed zoom:
 ![Output figure](https://github.com/andr-nau/weather_history/blob/master/interpolation_compare_raw.png "Filled NANs")
 
-And finally let's see averaged picture (using running mean calculation):
+It looks reasonably. So, finally let's see an averaged picture for all period of observations. I used running mean calculations for this. 
 ![Output figure](https://github.com/andr-nau/weather_history/blob/master/averaged_filled_day_temp.png "Averaging over 365 days")
+
+Some artifacts are present. For example, a dip after 1940. Or peak around 1938. It is connected with missing whole month records, not just a lot of NANs. It is visible on the next picture:
+
+![Output figure](https://github.com/andr-nau/weather_history/blob/master/interpolation_compare_filled.png "Artifacts")
+
+
 
 ***
 

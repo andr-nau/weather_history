@@ -22,15 +22,24 @@ __General algorithm of data processing:__
 
 - plot overall picture for temperatures over all years;
 
-- to clean the data - if there are gaps, NANs etc.;
+- to clean the data - if there are any gaps, NANs etc.;
 
 __My specific tasks:__
 
-1. to plot stacked graph of TMAX, TMIN over all period; 
+1. to plot yearly distribution of TMAX, TMIN over all period; 
 
 2. to build dependencies of TMAX, TMIN on specified dates/seasons;
 
-__Task 1 - summary of maximum and minimum temperature over all observable period, and comparison with my birthday year - 1980 :)__
+
+### Technologies used:
+
+I'm using NumPy package to process the data: __genfromtxt function__ to read all data (data is strictly structured); __numpy arrays__ to store the data; __datetime64, timedelta64__ functions to process the date information. Matplotlib package to visualize the data (usual __plot function__, additionally __fill between function__ to show yearly distribution of temperatures stacked from all years.        
+
+***
+
+__Task 1. Yearly distribution of maximum and minimum temperatures over all observable period.__
+
+I want to plot yearly distribution of maximum and minimum temperatures for all years, stacked in one graph. And additionally to compare with, say, 1980 -  my birthday year :)
 
 
 ![Output figure](https://github.com/andr-nau/weather_history/blob/master/Fig1.png "KYIV data")

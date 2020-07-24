@@ -79,3 +79,12 @@ __Task 2 - Check the trends in winter temperatures.__
 I extracted the temperature data for the winter months for each year and averaged it over three months. Additionally, I calculated trend line over all years:
 
 ![Output figure](https://github.com/andr-nau/weather_history/blob/master/Fig2.png "Winter averaged temperatures")
+
+From linear fitting we can obtain the slope of trend: 0.008 °C/year.
+
+## Next steps:
+
+- summer statistics
+- comparison of trends
+- comparison with Warsaw stats (my current place of residence) as well as world trends
+- additional descriptive statistics

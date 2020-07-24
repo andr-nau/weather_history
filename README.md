@@ -2,9 +2,11 @@
 
 ### Exploring weather history in Kyiv city, Ukraine.
 
-__Besides training tasks from [Data Analysis course](https://www.linkedin.com/learning/python-data-analysis-2015) (to find and visualize a data for US cities), I'm interested in climate changing in Kyiv city, Ukraine - my home city.__
+After the training during [Data Analysis course](https://www.linkedin.com/learning/python-data-analysis-2015) (learning NumPy by exploring weather statistics), I have been excited to extend this experience and to investigate some additional features of climate changing, specifically for Kyiv city, Ukraine - my home city.
 
-I'm using data from station "KIEV, UP", Network:ID "GHCND:UPM00033345". Location: Ukrainian Hydrometeorological Institute. The largest set of data comparing to other stations: from 1881-01-01 to 2020-07-20. (Latitude / Longitude: 50.4000° / 30.5331°, Elevation: 166 m)
+In brief, I want to see overall behavior of climate in Kyiv during observable period, and, for example, trends for winter temperature. I would like to know if I can see a lot of snow next winter.     
+
+I'm using dataset from station "KIEV, UP", Network:ID "GHCND:UPM00033345". Location: Ukrainian Hydrometeorological Institute. Latitude / Longitude: 50.4000° / 30.5331°, Elevation: 166 m. The largest set of data comparing to other stations: from 1881-01-01 to 2020-07-20.
 
 Data access provided by Global Historical Climatology Network - ([GHCN](https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn)). This is data service from the USA National Oceanic and Atmospheric Administration, NOAA / National Centers for Environmental Information, NCEI (former National Climatic Data Center, NCDC)
 
@@ -18,7 +20,7 @@ __General algorithm of data processing:__
 
 - parse the file using description in readme.txt ([https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt](https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt)) from GHCN;
 
-- extract needed parameters - daily max/min temperature (TMAX, TMIN) and their time reference;
+- extract needed parameters - daily max/min temperature (TMAX, TMIN) and their date reference;
 
 - plot overall picture for temperatures over all years;
 
@@ -26,14 +28,35 @@ __General algorithm of data processing:__
 
 __My specific tasks:__
 
-1. to plot yearly distribution of TMAX, TMIN over all period; 
+1. to plot yearly distribution of TMAX, TMIN over all years; 
 
 2. to build dependencies of TMAX, TMIN on specified dates/seasons;
 
-
 ### Technologies used:
 
-I'm using NumPy package to process the data: __genfromtxt function__ to read all data (data is strictly structured); __numpy arrays__ to store the data; __datetime64, timedelta64__ functions to process the date information. Matplotlib package to visualize the data (usual __plot function__, additionally __fill between function__ to show yearly distribution of temperatures stacked from all years.        
+I'm using NumPy package to process the data: __genfromtxt function__ to read all data (data is fixed-field text file); __numpy arrays__ to store the data; __datetime64, timedelta64 functions__ to process the date information, __polyfit, poly1d__ to find the trends. Matplotlib package - to visualize the data (usual __plot function__, additionally __fill between function__ to show yearly distribution of temperatures stacked from all years.
+
+***
+
+## Workflow.
+
+First, let's take a look on raw data. I have used structured numpy array and genfromtxt function to load the  full dataset. And then a function to extract rows with specified observation parameters, e.g. TMAX or TMIN (day max or min temperature, respectively). Raw data over all years of observation:
+![Output figure](https://github.com/andr-nau/weather_history/blob/master/raw_day_temp.png "Raw dataset")
+
+Dataset is not very accurate. After 2005 there are a lot of missing values (that filled with NANs during procedure of extracting TMAX/TMIN):
+![Output figure](https://github.com/andr-nau/weather_history/blob/master/raw_day_temp_2000.png "Raw dataset")
+
+Besides of missing single values (marked as NAN after import), there are missing whole month records (rows of TMAX or TMIN for one month). By comparing number of TMAX or TMIN rows for each year (should be 12 of each type), I found missing monthly records in 12 different years. Example of badly documented years:
+![Output figure](https://github.com/andr-nau/weather_history/blob/master/Bad_years.png "Bad years")
+
+To proceed next, I filled NAN values using numpy interpolation. Final picture:
+![Output figure](https://github.com/andr-nau/weather_history/blob/master/filled_day_temp.png "Filled NANs")
+
+And detailed zoom:
+![Output figure](https://github.com/andr-nau/weather_history/blob/master/interpolation_compare_raw.png "Filled NANs")
+
+And finally let's see averaged picture (using running mean calculation):
+![Output figure](https://github.com/andr-nau/weather_history/blob/master/averaged_filled_day_temp.png "Averaging over 365 days")
 
 ***
 
